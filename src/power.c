@@ -282,6 +282,8 @@ Return Value:
 		WdfRequestComplete(
 			Request,
 			status);
+
+		return;
 	}
 
 	if (InputBufferLength != 0)
@@ -302,6 +304,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 	}
 
@@ -323,6 +327,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 	}
 
@@ -341,6 +347,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 
 		*(DWORD*)pOutputBuffer = 0x10000;
@@ -349,6 +357,8 @@ Return Value:
 			Request,
 			status,
 			0);
+
+		return;
 	}
 	case IOCTL_TOUCH_POWER_TOGGLE:
 	{
@@ -368,6 +378,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 
 		if (*pInputBuffer == 1)
@@ -384,6 +396,8 @@ Return Value:
 				WdfRequestComplete(
 					Request,
 					status);
+
+				return;
 			}
 
 			Trace(
@@ -394,6 +408,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 
 		if (*pInputBuffer == 0)
@@ -410,6 +426,8 @@ Return Value:
 				WdfRequestComplete(
 					Request,
 					status);
+
+				return;
 			}
 
 			Trace(
@@ -420,6 +438,8 @@ Return Value:
 			WdfRequestComplete(
 				Request,
 				status);
+
+			return;
 		}
 
 		Trace(
@@ -430,6 +450,8 @@ Return Value:
 		WdfRequestComplete(
 			Request,
 			status);
+
+		return;
 	}
 	case IOCTL_TOUCH_POWER_STATE:
 	{
@@ -451,11 +473,15 @@ Return Value:
 				Request,
 				status,
 				0);
+
+			return;
 		}
 		status = STATUS_BUFFER_TOO_SMALL;
 		WdfRequestComplete(
 			Request,
 			status);
+
+		return;
 	}
 	default:
 	{
@@ -468,6 +494,8 @@ Return Value:
 		WdfRequestComplete(
 			Request,
 			status);
+
+		return;
 	}
 	}
 }
